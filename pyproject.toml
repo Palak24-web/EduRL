@@ -1,0 +1,30 @@
+# Copyright (c) 2026 - Personalized Learning Path OpenEnv Environment
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openenv-personalized_learning_path"
+version = "1.0.0"
+description = "OpenEnv environment: AI agent designs personalised learning paths for students"
+requires-python = ">=3.10"
+dependencies = [
+    "openenv-core[core]>=0.2.2",
+    "openai>=1.0.0",
+    "requests>=2.31.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.0.0",
+    "httpx>=0.27.0",
+]
+
+[project.scripts]
+server = "personalized_learning_path.server.app:main"
+
+[tool.setuptools]
+include-package-data = true
+packages = ["personalized_learning_path", "personalized_learning_path.server"]
+package-dir = { "personalized_learning_path" = ".", "personalized_learning_path.server" = "server" }
